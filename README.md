@@ -19,7 +19,7 @@ partners
 	created_at
 	updated_at
 	partner_type
-  lead_sales_contact
+  	lead_sales_contact
 ```
 
 ```
