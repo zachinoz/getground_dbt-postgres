@@ -44,3 +44,27 @@ Happy modeling!
 [0m18:14:32.467832 [debug] [MainThread]: Executing "git --help"
 [0m18:14:32.478647 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FD23C41600>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FD23C42AA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FD23C43730>]}
 [0m18:14:32.479648 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2022-12-07 19:36:34.460642 | 709937f7-5e3f-4ef2-b5ec-c09ff1b566c0 ==============================
+[0m19:36:34.460642 [info ] [MainThread]: Running with dbt=1.3.1
+[0m19:36:34.461642 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': 'C:\\Users\\Zac\\.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'config_dir': True, 'which': 'debug', 'indirect_selection': 'eager'}
+[0m19:36:34.461642 [debug] [MainThread]: Tracking: tracking
+[0m19:36:34.473332 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF10DF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF10640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF10220>]}
+[0m19:36:34.474331 [info ] [MainThread]: To view your profiles.yml file, run:
+
+start C:\Users\Zac\.dbt
+[0m19:36:34.474331 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF10640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF10220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A57AF11450>]}
+[0m19:36:34.475841 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2022-12-07 19:45:18.673781 | 3a054f2d-8dbc-4ed4-b5e7-365e595bd24f ==============================
+[0m19:45:18.673781 [info ] [MainThread]: Running with dbt=1.3.1
+[0m19:45:18.674778 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': 'C:\\Users\\Zac\\.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'config_dir': True, 'which': 'debug', 'indirect_selection': 'eager'}
+[0m19:45:18.675284 [debug] [MainThread]: Tracking: tracking
+[0m19:45:18.684729 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE6AFE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE68AF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE6B280>]}
+[0m19:45:18.686043 [info ] [MainThread]: To view your profiles.yml file, run:
+
+start C:\Users\Zac\.dbt
+[0m19:45:18.687052 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE68AF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE6B280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002304CE68C70>]}
+[0m19:45:18.687052 [debug] [MainThread]: Flushing usage events
