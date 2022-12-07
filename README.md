@@ -1,1 +1,1 @@
-# dbt-tutorial
+# GetGround Technical Task
