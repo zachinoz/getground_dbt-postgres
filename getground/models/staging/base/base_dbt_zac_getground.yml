@@ -10,11 +10,11 @@ models:
         tests:
           - unique
           - not_null
-      - name: created_at_ts
+      - name: created_at
         description: Timestamp of when record was created
         tests:
           - not_null
-      - name: updated_at_ts
+      - name: updated_at
         description: Timestamp of when record was last updated
         tests:
           - not_null
@@ -29,7 +29,7 @@ models:
         tests:
           - relationships:
               to: ref('dbt_zac_getground','sales_people')
-              field: name
+              field: sales_person_name
 
   - name: base_dbt_zac_getground__referrals
     description: This table shows records of referrals, which are then attributed to the specific consultant at a partner
@@ -39,11 +39,11 @@ models:
         tests:
           - unique
           - not_null
-      - name: created_at_ts
+      - name: created_at
         description: Timestamp of when record was created
         tests:
           - not_null
-      - name: updated_at_ts
+      - name: updated_at
         description: Timestamp of when record was last updated
         tests:
           - not_null
