@@ -3,7 +3,8 @@ All database processes were done with Postgres
 
 1. Please insert the data provided as CSV into tables in an SQL database. Please include SQL queries used throughout the assignment.
 
-    - creating sql tables
+Creating sql tables
+
 ```
 -- partners table
 CREATE TABLE IF NOT EXISTS dbt_zac_getground.partners (
@@ -33,7 +34,8 @@ CREATE TABLE IF NOT EXISTS dbt_zac_getground.referrals (
 );
 ```
 
-    - loading data was done via sql query as well
+Loading data was done via sql query as well
+
 ```
 -- partners
 copy dbt_zac_getground.partners(
@@ -68,6 +70,7 @@ FROM 'C:\Users\Zac\Downloads\GetGround_technical_task\sales_people.csv'
 DELIMITER ','
 CSV HEADER;
 ```
+
 2. Use dbt to pre-precess the data and output dbt models for analysis. Include appropriate data quality tests and documentation.
 
 dbt log file link here
@@ -75,11 +78,12 @@ dbt log file link here
 3. Analyse the data using SQL. Be sure to include your investigative thought process, findings, limitations, and assumptions.
 
 thought process
-    My first thought was investigating gaps in data, so looking at the zero values in partner table for example. It wasn't until I created the staging partner and sales people tables in dbt, and finally the model in marts which combined all three tables that highlighted the gaps in data.
+    - My first thought was investigating gaps in data, so looking at the zero values in partner table for example. It wasn't until I created the staging partner and sales people tables in dbt, and finally the model in marts which combined all three tables that highlighted the gaps in data.
 
 findings
      - Notably, lead sales contact/sales person 'Potato' does not have a country or entry in the sales_people table. 
      If we apply this to the joint referral_partner_sales dbt table, it results in almost 25% of country data missing.
+
 ```
     with total as (
     select
@@ -93,7 +97,9 @@ findings
     from source.dbt_zac_getground__referrals_partners_sales_people,total
     group by lead_sales_country,total
 ```        
+
     - Following on from this, we can also apply the same query to the partner and sales people joint dbt table and see almost 22% of partners table is missing country data
+
 ```
     with total as (
             select
@@ -107,7 +113,9 @@ findings
     from source.stg_dbt_zac_getground__partners_sales_people,total
     group by lead_sales_country,total
 ```
+
     - Combining country and referral status shows a spread of referral status that are missing country data, ranging from 2%(disinterest) to almost 16% (successful) of data missing.
+
 ```
 with total as (
             select
@@ -123,7 +131,9 @@ from source.dbt_zac_getground__referrals_partners_sales_people,total
 group by referral_status,lead_sales_country,total
 order by referral_status,referral_count desc
 ```
+
     - With is_outbound field determining upsell or GetGround receiving a commission, we can see over 7% of upsells are missing country data, while over 16% in 'not an upsell' are missing country data which could be used to focus down countries that may be underperforming in this regard.
+
 ```
     with total as (
                 select
@@ -139,6 +149,7 @@ order by referral_status,referral_count desc
     group by is_outbound,lead_sales_country,total
     order by is_outbound,outbound_count desc
 ```
+
     - Oddly, the Partners table starts with an ID of 2, instead of 1, which I'm not sure if its by design, but changing it to start at 1 would mean changing all the partner id's in the referral tables as well
     - On that note, company_id starts at 0, so these inconsistencies should be addressed ideally to ensure standardisation of unique identification numbers across the datasets 
 
