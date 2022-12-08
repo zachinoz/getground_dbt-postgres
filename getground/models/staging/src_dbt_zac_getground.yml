@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: dbt_zac_getground
+    description: Monolithic table structure
+    schema: dbt_zac_getground
+    tables:
+      - name: partners
+        description: Partners each have consultants such as Joe Smith working at Lettings Agent A
+        columns:
+          - name: id
+            description: The primary key for this table
+            tests:
+              - unique
+              - not_null
+          - name: created_at
+            description: Timestamp of when record was created
+            tests:
+              - not_null
+          - name: updated_at
+            description: Timestamp of when record was last updated
+            tests:
+              - not_null
+          - name: partner_type
+            description: Identifies the type of partner
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Agent','IFA','Developer','Other','Lender','Management company','Insurer','Influencer']
+          - name: lead_sales_contact
+            description: Identifies the lead sales contact for this record
+            tests:
+              - not_null
+
+      - name: referrals
+        description: This table shows records of referrals which are then attributed to the specific consultant at a partner
+        columns:
+          - name: id
+            description: The primary key for this table
+            tests:
+              - unique
+              - not_null
+          - name: created_at
+            description: Timestamp of when record was created
+            tests:
+              - not_null
+          - name: updated_at
+            description: Timestamp of when record was last updated
+            tests:
+              - not_null
+          - name: company_id
+            description: The ID of the company
+            tests:
+              - not_null
+          - name: partner_id
+            description: The ID of the partner
+            tests:
+              - not_null
+          - name: consultant_id
+            description: The ID of the consultant
+            tests:
+              - not_null
+          - name: status
+            description: The status of the referral
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['pending','disinterested','successful']
+          - name: is_outbound
+            description: Whether the customer has been referred to a partner, 1 being True/yes, 0 being False/no
+            tests:
+              - not_null
+              - accepted_values:
+                  values: [0,1]
+
+      - name: sales_people
+        description: This table shows all sales people which work in a 'key account' model, referrals come from partners, and a sales person rypically manages partner accounts
+        columns:
+          - name: name
+            description: The name of the sales person
+            tests:
+              - unique
+              - not_null
+          - name: country
+            description: The country of the sales person
+            tests:
+              - not_null
