@@ -74,7 +74,7 @@ CSV HEADER;
 
 2. Use dbt to pre-precess the data and output dbt models for analysis. Include appropriate data quality tests and documentation.
 
-dbt log file link here
+dbt log file link [here](https://github.com/zachinoz/getground_dbt-postgres/blob/1f803031e5e2073cb61200c5d8f4943576d077f7/logs/dbt.log)
 
 3. Analyse the data using SQL. Be sure to include your investigative thought process, findings, limitations, and assumptions.
 
