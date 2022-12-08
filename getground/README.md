@@ -82,7 +82,7 @@ dbt log file link here
 
 My first thought was investigating gaps in data, so looking at the zero values in partner table for example. It wasn't until I created the staging partner and sales people tables in dbt, and finally the model in marts which combined all three tables that highlighted the gaps in data.
 
-**findings**
+**Findings**
 
 Notably, lead sales contact/sales person 'Potato' does not have a country or entry in the sales_people table. If we apply this to the joint referral_partner_sales dbt table, it results in almost 25% of country data missing.
 
