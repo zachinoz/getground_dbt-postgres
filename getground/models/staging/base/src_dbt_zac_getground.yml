@@ -6,10 +6,10 @@ sources:
     schema: dbt_zac_getground
     tables:
       - name: partners
-        description: Partners each have consultants such as Joe Smith working at Lettings Agent A
+        description: Partners each have consultants, such as Joe Smith working at Lettings Agent A
         columns:
           - name: id
-            description: The primary key for this table
+            description: The ID for this partner
             tests:
               - unique
               - not_null
@@ -31,9 +31,12 @@ sources:
             description: Identifies the lead sales contact for this record
             tests:
               - not_null
+              - relationships:
+                  to: ref('dbt_zac_getground','sales_people')
+                  field: name
 
       - name: referrals
-        description: This table shows records of referrals which are then attributed to the specific consultant at a partner
+        description: This table shows records of referrals, which are then attributed to the specific consultant at a partner
         columns:
           - name: id
             description: The primary key for this table
@@ -56,6 +59,9 @@ sources:
             description: The ID of the partner
             tests:
               - not_null
+              - relationships:
+                  to: ref('dbt_zac_getground','partners')
+                  field: partner_id      
           - name: consultant_id
             description: The ID of the consultant
             tests:
@@ -79,7 +85,6 @@ sources:
           - name: name
             description: The name of the sales person
             tests:
-              - unique
               - not_null
           - name: country
             description: The country of the sales person

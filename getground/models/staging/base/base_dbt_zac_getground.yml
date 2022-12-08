@@ -2,11 +2,11 @@
 version: 2
 
 models:
-  - name: stg_partners
+  - name: base_dbt_zac_getground__partners
     description: Partners each have consultants, such as Joe Smith working at Lettings Agent A
     columns:
       - name: id
-        description: The primary key for this table
+        description: The ID for this partner
         tests:
           - unique
           - not_null
@@ -28,8 +28,11 @@ models:
         description: Identifies the lead sales contact for this record
         tests:
           - not_null
+          - relationships:
+              to: ref('dbt_zac_getground','sales_people')
+              field: name
 
-  - name: stg_referrals
+  - name: base_dbt_zac_getground__referrals
     description: This table shows records of referrals, which are then attributed to the specific consultant at a partner
     columns:
       - name: id
@@ -53,6 +56,9 @@ models:
         description: The ID of the partner
         tests:
           - not_null
+          - relationships:
+              to: ref('dbt_zac_getground','partners')
+              field: partner_id      
       - name: consultant_id
         description: The ID of the consultant
         tests:
@@ -70,13 +76,12 @@ models:
           - accepted_values:
               values: [0,1]
 
-  - name: stg_sales_people
+  - name: base_dbt_zac_getground__sales_people
     description: This table shows all sales people which work in a 'key account' model, referrals come from partners, and a sales person rypically manages partner accounts
     columns:
       - name: name
         description: The name of the sales person
         tests:
-          - unique
           - not_null
       - name: country
         description: The country of the sales person
