@@ -5,16 +5,16 @@ models:
   - name: base_dbt_zac_getground__partners
     description: Partners each have consultants, such as Joe Smith working at Lettings Agent A
     columns:
-      - name: id
+      - name: partner_id
         description: The ID for this partner
         tests:
           - unique
           - not_null
-      - name: created_at
+      - name: created_at_ts
         description: Timestamp of when record was created
         tests:
           - not_null
-      - name: updated_at
+      - name: updated_at_ts
         description: Timestamp of when record was last updated
         tests:
           - not_null
@@ -27,7 +27,6 @@ models:
       - name: lead_sales_contact
         description: Identifies the lead sales contact for this record
         tests:
-          - not_null
           - relationships:
               to: ref('dbt_zac_getground','sales_people')
               field: name
@@ -35,16 +34,16 @@ models:
   - name: base_dbt_zac_getground__referrals
     description: This table shows records of referrals, which are then attributed to the specific consultant at a partner
     columns:
-      - name: id
+      - name: referral_id
         description: The primary key for this table
         tests:
           - unique
           - not_null
-      - name: created_at
+      - name: created_at_ts
         description: Timestamp of when record was created
         tests:
           - not_null
-      - name: updated_at
+      - name: updated_at_ts
         description: Timestamp of when record was last updated
         tests:
           - not_null
@@ -63,7 +62,7 @@ models:
         description: The ID of the consultant
         tests:
           - not_null
-      - name: status
+      - name: referral_status
         description: The status of the referral
         tests:
           - not_null
@@ -79,7 +78,7 @@ models:
   - name: base_dbt_zac_getground__sales_people
     description: This table shows all sales people which work in a 'key account' model, referrals come from partners, and a sales person rypically manages partner accounts
     columns:
-      - name: name
+      - name: sales_person_name
         description: The name of the sales person
         tests:
           - not_null
